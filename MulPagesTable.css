@@ -1,0 +1,159 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 微软雅黑;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.addBar {
+  margin: 5px auto;
+}
+
+body {
+  background: #f0f0f0;
+}
+.content {
+  width: 1000px;
+  height: 500px;
+  padding: 10px;
+  margin: 10px calc(50% - 500px);
+  background: #ffffff;
+}
+
+.content-table {
+  width: 100%;
+  /*height: calc(100% - 35px);*/
+}
+
+.content-table-head {
+  height: 35px;
+}
+
+.content-table-body {
+  height: calc(100% - 35px);
+}
+
+.content-bottom {
+  height: 40px;
+  width: 100%;
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+}
+
+#content-bottom-pageinfo {
+  line-height: 40px;
+  height: 100%;
+  display: inline-block;
+  float: left;
+  padding: 0 5px;
+}
+
+#content-bottom-pageselect {
+  height: 100%;
+  display: inline-block;
+  float: right;
+}
+
+.current-page {
+  background-color: aqua;
+}
+
+.delete {
+  color: blue;
+  cursor: pointer;
+}
+
+input[type='text'] {
+  height: 35px;
+  padding: 0 10px;
+}
+
+.item-size1 {
+  width: 6%;
+}
+
+.item-size2 {
+  width: 10%;
+}
+
+.item-size3 {
+  width: 14%;
+}
+
+.item-size4 {
+  width: 10%;
+}
+
+.item-size5 {
+  width: 35%;
+}
+
+.item-size6 {
+  width: 10%;
+}
+
+.item-size7 {
+  width: 10%;
+}
+
+label {
+  margin: 5px 5px 15px 15px;
+}
+
+.nocurrent-page {
+  background-color: #f0f0f0;
+}
+
+.nowPage {
+  border: 2px solid blue;
+  padding: 5px;
+}
+
+.page-item {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid black;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.page-item:active {
+  border: 2px solid blue;
+  padding: 5px;
+}
+
+.select-page-bar {
+  display: inline-block;
+  height: 40px;
+}
+
+.select-page-bar input[type="text"] {
+  text-align: center;
+  width: 40px;
+}
+
+/*.select-page-bar button {*/
+/*padding: 6px;*/
+/*font-size: 14px;*/
+/*border-radius: 5px;*/
+/*background-color: #f0f0f0;*/
+/*}*/
+
+table, tr, th, td {
+  border: 1px solid #999999;
+  border-collapse: collapse;
+}
+
+td {
+  text-align: center;
+  height: 40px;
+}
+
+th {
+  text-align: center;
+  height: 40px;
+}

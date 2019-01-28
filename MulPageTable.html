@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>多页列表数据的显示与翻页</title>
+  <link href="MulPagesTable.css" rel="stylesheet" type="text/css">
+  <script src="jQuery-v3.3.1.js"></script>
+  <script src="./Vue.js"></script>
+  <script src="./MulPagesTable.js"></script>
+
+</head>
+<body>
+
+<!-- 首先需要创建一个用于存放数据的空列表 -->
+<!-- 主要用来限定显示的宽度 -->
+<div class="content" id="content">
+  <div class="addBar" id="addBar" v-on:keyup.enter="doAdd">
+    <label>id</label><input type="text" readonly="readonly" v-model="addId" disabled />
+    <label>时间</label><input type="text" readonly="readonly" v-model="addTime" disabled /><br />
+    <label>地点</label><input type="text" v-model="addLocal" />
+    <label>人物</label><input type="text" v-model="addPerson" />
+    <label>事情</label><input type="text" v-model="addMatter" />
+    <label>备注</label><input type="text" v-model="addNote" />
+    <button @click="doAdd">添加</button>
+  </div>
+  <table class="content-table" id="content-table">
+    <thead class="content-table-head" id="content-table-head">
+    <tr>
+      <th class="item-size1">编号</th>
+      <th class="item-size2">时间</th>
+      <th class="item-size3">地点</th>
+      <th class="item-size4">人物</th>
+      <th class="item-size5">事情</th>
+      <th class="item-size6">备注</th>
+      <th class="item-size7">操作</th>
+    </tr>
+    </thead>
+    <tbody class="content-table-body" id="content-table-body">
+    <tr v-if="tableData.length === 0">
+      <td colspan="7">暂时没有数据</td>
+    </tr>
+    <tr v-for="(item, index) in tableData" v-if="index>=(pageIndex-1)*pageSize && index<pageIndex*pageSize">
+      <td class="item-size1">{{ item.id }}</td>
+      <td class="item-size2">{{ item.time }}</td>
+      <td class="item-size3">{{ item.local }}</td>
+      <td class="item-size4">{{ item.person }}</td>
+      <td class="item-size5">{{ item.matter }}</td>
+      <td class="item-size6">{{ item.note }}</td>
+      <td class="item-size7 delete" v-on:click="doDelete(index)">删除</td>
+    </tr>
+    </tbody>
+  </table>
+  <!-- 表格的底栏，用于放置翻页和页码信息 -->
+  <div class="content-bottom" id="content-bottom">
+    <div id="content-bottom-pageinfo">当前页码{{ pageIndex }}/{{ pages.length }}</div>
+    <div id="content-bottom-pageselect">
+      <span v-if="pageIndex > 1" class="page-item" @click="doSelectPage(pageIndex-1)">上一页</span>
+      <span v-for="page in pages" class="page-item" @click="doSelectPage(page)"
+            :class="{'current-page': page == pageIndex, 'nocurrent-page':page != pageIndex }">{{ page }}</span>
+      <span v-if="pageIndex < pages.length" class="page-item" @click="doSelectPage(pageIndex+1)">下一页</span>
+      <span class="select-page-bar">
+        <input type="text" v-model="selectPage">
+        <button @click="doSelectPage(selectPage)" class="page-item">跳转</button>
+      </span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
